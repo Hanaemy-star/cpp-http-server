@@ -1,12 +1,25 @@
-cmake_minimum_required(VERSION 3.20)  
-project(cpp_http_server)  
+cmake_minimum_required(VERSION 3.10)
+project(cpp_http_server)
 
-set(CMAKE_CXX_STANDARD 20)   
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -pthread")   
+set(CMAKE_CXX_STANDARD 17)
 
-# Подключаем Boost  
-find_package(Boost REQUIRED COMPONENTS system)  
+# Ищем Boost (указываем все нужные компоненты)
+find_package(Boost REQUIRED COMPONENTS system asio)
 
-# Собираем сервер  
-add_executable(server src/main.cpp)  
-target_link_libraries(server PRIVATE Boost::system pthread) 
+if(Boost_FOUND)
+    message(STATUS "Boost include dirs: ${Boost_INCLUDE_DIRS}")
+    message(STATUS "Boost libraries: ${Boost_LIBRARIES}")
+    include_directories(${Boost_INCLUDE_DIRS})
+else()
+    message(FATAL_ERROR "Boost not found!")
+endif()
+
+add_executable(cpp_http_server src/main.cpp src/server.cpp)
+
+# Линкуем все нужные компоненты
+target_link_libraries(cpp_http_server PRIVATE 
+    Boost::boost
+    Boost::system
+    Boost::asio
+    ws2_32  # Добавляем Winsock
+)
