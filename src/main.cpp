@@ -14,6 +14,14 @@ int main() {
         tcp::socket socket(io);
         acceptor.accept(socket);
         std::cout << "Client connected!\n";
+
+        std::string response =
+            "HTTP/1.1 200 OK\r\n"
+            "Content-Length: 12\r\n"
+            "\r\n"
+            "Hello world!";
+        write(socket, buffer(response));
+        std::cout << "Response sent!\n";
     } catch (std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
