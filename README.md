@@ -10,7 +10,7 @@ A multi-threaded HTTP server built with **Boost.Asio**, designed for high load a
 
 ## Build & Run  
 ```bash  
-git clone https://github.com/твой-ник/cpp-http-server.git  
+git clone https://github.com/Hanaemy-star/cpp-http-server.git  
 cd cpp-http-server  
 mkdir build && cd build  
 cmake .. && make  
