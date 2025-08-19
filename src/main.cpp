@@ -15,11 +15,22 @@ int main() {
         acceptor.accept(socket);
         std::cout << "Client connected!\n";
 
+        streambuf buf;
+        read_until(socket, buf, "\r\n\r\n");
+        std::istream is(&buf);
+        std::string request;
+        std::getline(is, request);
+        std::cout << "Request: " << request << std::endl;
+
+        std::string path = request.substr(4, request.find(' ', 4) - 4);
+
+
         std::string response =
-            "HTTP/1.1 200 OK\r\n"
-            "Content-Length: 12\r\n"
-            "\r\n"
-            "Hello world!";
+            "HTTP/1.1 200 OK\r\nContent-Length: " +
+                std::to_string(path.size() + 6) +
+                    "\r\n\r\nPATH: " +
+                        path;
+
         write(socket, buffer(response));
         std::cout << "Response sent!\n";
     } catch (std::exception& e) {
