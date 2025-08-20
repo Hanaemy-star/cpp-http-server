@@ -79,7 +79,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "D:/CLion 2025.1.4/http-server-cpp/main.cpp",
-    "settings.editor.selected.configurable": "configurable.group.editor",
+    "settings.editor.selected.configurable": "CPPToolchains",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -121,7 +121,7 @@
       <workItem from="1755522093599" duration="1347000" />
       <workItem from="1755523500784" duration="730000" />
       <workItem from="1755524249739" duration="1015000" />
-      <workItem from="1755525300220" duration="17556000" />
+      <workItem from="1755525300220" duration="23116000" />
     </task>
     <servers />
   </component>
@@ -132,5 +132,9 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
